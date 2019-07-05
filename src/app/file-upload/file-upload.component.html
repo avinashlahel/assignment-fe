@@ -1,0 +1,13 @@
+<div class="upload-container">
+  <div class="title-text">Upload CSV Formatted file</div>
+  <!--Form for uploading the file-->
+  <form (ngSubmit)="onSubmit()">
+    <div class="chooseFile">
+      <input id="fileInput" name="file" type="file" (change)="onFileSelect($event.target)"/>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button color="primary">Upload</button>
+    </div>
+  </form>
+</div>
+
