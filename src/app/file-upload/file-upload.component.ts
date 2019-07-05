@@ -1,4 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatTableDataSource} from '@angular/material/table';
+import { MatSort } from '@angular/material';
+
+export interface UserElement {
+  fname: string;
+  lname: string;
+  issues: number;
+  dob: string;
+}
+
+const initialData = [{fname: "", lname: "",issues: null,dob: ""}]
 
 @Component({
   selector: 'app-file-upload',
@@ -6,13 +17,23 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./file-upload.component.css']
 })
 export class FileUploadComponent implements OnInit {
-  tableData: Array<any>;
+  tableData: any = initialData;
+  
+  displayedColumns: string[] = ['fname', 'lname', 'issues', 'dob'];
+
+  // [{fname: "Avinash", lname: "Lahel",issues: 2,dob: "01-02-1986"},
+  // {fname: "Rakesh", lname: "Nagaraj",issues: 10,dob: "01-02-1986"}];
+
+  dataSource = new MatTableDataSource(this.tableData);
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor() {
   }
 
   ngOnInit() {
     this.tableData = [];
+    this.dataSource.sort = this.sort;
   }
 
   // Sanitize fields to remove any additional quotes added while parsing
@@ -45,6 +66,7 @@ export class FileUploadComponent implements OnInit {
       }
     }
     console.log(parsedContent);
+    // this.tableData = parsedContent;
   }
 
   onFileSelect(input) {
@@ -59,6 +81,10 @@ export class FileUploadComponent implements OnInit {
 
   onSubmit() {
     console.log('Submitted');
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

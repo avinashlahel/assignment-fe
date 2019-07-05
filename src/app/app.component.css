@@ -4,4 +4,12 @@
   justify-content: center;
   height: 100vh;
   margin-top: 50px;
+  margin-left: 20px;
+}
+
+.toolbar-text{
+  margin: 30px auto;
+  font-weight: 400;
+  font-size: 2rem;
+  font-family: 'Acme', sans-serif;
 }

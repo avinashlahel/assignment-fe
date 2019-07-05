@@ -1,13 +1,59 @@
-<div class="upload-container">
-  <div class="title-text">Upload CSV Formatted file</div>
-  <!--Form for uploading the file-->
-  <form (ngSubmit)="onSubmit()">
-    <div class="chooseFile">
-      <input id="fileInput" name="file" type="file" (change)="onFileSelect($event.target)"/>
-    </div>
-    <div>
-      <button type="submit" mat-raised-button color="primary">Upload</button>
-    </div>
-  </form>
+
+
+<div class="table-container">
+  <!-- <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter" color="primary">
+  </mat-form-field> --> 
+
+  
+
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+     <!-- FirstName Column -->
+  <ng-container matColumnDef="fname">
+      <th mat-header-cell *matHeaderCellDef > First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.fname}} </td>
+    </ng-container>
+
+     <!-- LastName Column -->
+  <ng-container matColumnDef="lname">
+      <th mat-header-cell *matHeaderCellDef > Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lname}} </td>
+    </ng-container>
+
+     <!-- Issues Column -->
+  <ng-container matColumnDef="issues">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Issues </th>
+      <td mat-cell *matCellDef="let element"> {{element.issues}} </td>
+    </ng-container>
+  
+     <!-- dob Column -->
+  <ng-container matColumnDef="dob">
+      <th mat-header-cell *matHeaderCellDef > Date of Birth </th>
+      <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+  </table>
+  
 </div>
+
+<div class="upload-container">
+    <!-- <div class="title-text">Upload CSV Formatted file</div> -->
+    <!--Form for uploading the file-->
+    <form (ngSubmit)="onSubmit()">
+      <div class="chooseFile">
+        <input id="fileInput" name="file" type="file" (change)="onFileSelect($event.target)"/>
+      </div>
+      <div class="uplod-buttons">
+        <span><button type="submit" mat-raised-button color="primary" placeholder="Upload file">Upload</button></span>
+        <span><button type="submit" mat-raised-button color="primary">Clear</button></span>
+      </div>
+      <div>
+          
+        </div>
+    </form>
+  </div>
 
