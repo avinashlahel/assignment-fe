@@ -1,6 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatTableDataSource} from '@angular/material/table';
-import { MatSort } from '@angular/material';
+import { Component, OnInit, ViewChild } from "@angular/core";
+import { MatTableDataSource } from "@angular/material/table";
+import { MatSort } from "@angular/material";
 
 export interface UserElement {
   fname: string;
@@ -9,27 +9,26 @@ export interface UserElement {
   dob: string;
 }
 
-const initialData = [{fname: "", lname: "",issues: null,dob: ""}]
+const initialData = [{ fname: "", lname: "", issues: null, dob: "" }];
 
 @Component({
-  selector: 'app-file-upload',
-  templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.css']
+  selector: "app-file-upload",
+  templateUrl: "./file-upload.component.html",
+  styleUrls: ["./file-upload.component.css"]
 })
 export class FileUploadComponent implements OnInit {
   tableData: any = initialData;
-  
-  displayedColumns: string[] = ['fname', 'lname', 'issues', 'dob'];
 
-  // [{fname: "Avinash", lname: "Lahel",issues: 2,dob: "01-02-1986"},
-  // {fname: "Rakesh", lname: "Nagaraj",issues: 10,dob: "01-02-1986"}];
+  // [{fname: "Ricky", lname: "Ponting",issues: 2,dob: "01-02-1986"},
+  // {fname: "Adam", lname: "Gilchrist",issues: 10,dob: "01-02-1986"}];
+
+  displayedColumns: string[] = ["fname", "lname", "issues", "dob"];
 
   dataSource = new MatTableDataSource(this.tableData);
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.tableData = [];
@@ -55,7 +54,7 @@ export class FileUploadComponent implements OnInit {
     const dataRecords = allRecords.slice(1); // Remove the header
     if (dataRecords && dataRecords.length > 0) {
       for (const record of dataRecords) {
-        const fields = this.sanitize(record.split(',')); // individual columns
+        const fields = this.sanitize(record.split(",")); // individual columns
         const obj = {
           fName: fields[0],
           lName: fields[1],
@@ -75,16 +74,15 @@ export class FileUploadComponent implements OnInit {
       const fileToRead = files[0];
       const fileReader = new FileReader();
       fileReader.onload = this.onFileLoad.bind(this); // bind 'this' as its a callback
-      fileReader.readAsText(fileToRead, 'UTF-8');
+      fileReader.readAsText(fileToRead, "UTF-8");
     }
   }
 
   onSubmit() {
-    console.log('Submitted');
+    console.log("Submitted"); //TODO
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 }
