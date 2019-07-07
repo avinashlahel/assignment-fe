@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort } from "@angular/material";
 
@@ -16,23 +16,27 @@ const initialData = [{ fname: "", lname: "", issues: null, dob: "" }];
   templateUrl: "./file-upload.component.html",
   styleUrls: ["./file-upload.component.css"]
 })
-export class FileUploadComponent implements OnInit {
-  tableData: any = initialData;
-
+export class FileUploadComponent implements OnInit,OnChanges {
+  
+  tableData: any ;
+  dataSource: MatTableDataSource<any>; 
   // [{fname: "Ricky", lname: "Ponting",issues: 2,dob: "01-02-1986"},
   // {fname: "Adam", lname: "Gilchrist",issues: 10,dob: "01-02-1986"}];
 
   displayedColumns: string[] = ["fname", "lname", "issues", "dob"];
-
-  dataSource = new MatTableDataSource(this.tableData);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor() {}
 
   ngOnInit() {
-    this.tableData = [];
+    this.tableData = initialData;
+    this.dataSource = new MatTableDataSource(this.tableData);
     this.dataSource.sort = this.sort;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // for any manual changes after change detection
   }
 
   // Sanitize fields to remove any additional quotes added while parsing
@@ -64,8 +68,7 @@ export class FileUploadComponent implements OnInit {
         parsedContent.push(obj);
       }
     }
-    console.log(parsedContent);
-    // this.tableData = parsedContent;
+    this.dataSource.data = parsedContent;
   }
 
   onFileSelect(input) {
