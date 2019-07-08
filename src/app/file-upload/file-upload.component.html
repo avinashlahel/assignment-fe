@@ -41,11 +41,11 @@
     <!--Form for uploading the file-->
     <form (ngSubmit)="onSubmit()">
       <div class="chooseFile">
-        <input id="fileInput" name="file" type="file" (change)="onFileSelect($event.target)"/>
+        <input #fileInput id="fileInput" name="file" type="file" (change)="onFileSelect($event.target)"/>
       </div>
       <div class="uplod-buttons">
-        <span><button type="submit" mat-raised-button color="primary" placeholder="Upload file">Upload</button></span>
-        <span><button type="submit" mat-raised-button color="primary">Clear</button></span>
+        <span><button type="button" (click)="onUpload()" mat-raised-button color="primary" >Upload</button></span>
+        <span><button type="button" (click)="onClear()" mat-raised-button color="primary">Clear</button></span>
       </div>
       <div>
           

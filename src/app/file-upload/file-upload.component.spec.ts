@@ -17,7 +17,8 @@ import {
   MatTableModule,
   MatSortModule,
   MatToolbarModule,
-  MatTableDataSource
+  MatTableDataSource,
+  MatSnackBarModule
 } from "@angular/material";
 import { DebugElement } from "@angular/core";
 import { By } from "@angular/platform-browser";
@@ -45,7 +46,8 @@ describe("FileUploadComponent", () => {
         MatFormFieldModule,
         MatTableModule,
         MatSortModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSnackBarModule
       ]
     }).compileComponents();
   }));
@@ -92,6 +94,7 @@ describe("FileUploadComponent", () => {
     uploadElement.dispatchEvent(new Event("change"));
 
     setTimeout(() => {
+      component.onUpload();
       fixture.detectChanges();
       let table = fixture.debugElement.nativeElement.querySelector("table");
       const tContent = table.textContent;

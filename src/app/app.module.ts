@@ -6,7 +6,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule, 
-  MatSortModule, MatToolbarModule} from '@angular/material';
+  MatSortModule, MatToolbarModule, MatSnackBarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import {MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule,
     MatFormFieldModule,
     MatTableModule,
     MatSortModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

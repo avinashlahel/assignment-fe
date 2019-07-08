@@ -4,7 +4,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule, 
-  MatSortModule, MatToolbarModule} from '@angular/material';
+  MatSortModule, MatToolbarModule, MatSnackBarModule} from '@angular/material';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -22,7 +22,8 @@ describe('AppComponent', () => {
         MatFormFieldModule,
         MatTableModule,
         MatSortModule,
-        MatToolbarModule
+        MatToolbarModule,
+        MatSnackBarModule
       ]
     }).compileComponents();
   }));
