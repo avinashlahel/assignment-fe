@@ -1,27 +1,48 @@
 # AssignementFe
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+Following tools have been used for this project
 
-## Development server
+Angular 8
+Angular CLI
+Angular Material (responsive UI)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## What does the app do ?
 
-## Code scaffolding
+- The app can be used to upload a CSV file and display the parsed contents in a table.
+- The uploaded content can then be filtered in ascending/descending order by clicking the Issues column
+- Only CSV files would be allowed, others would prompt as not allowed.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Running it locally
 
-## Build
+To run the project locally, execute the following commands :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+1) git clone https://github.com/avinashlahel/assignment-fe.git
+2) npm install
+3) ng serve 
+4) Navigate to http://localhost:4200 
+5) Click on choose a file and then click on Upload
+
+Before running these, make sure you have node(v10+) and angular CLI installed globally
+
+## Issues Running locally ?
+
+Incase you are not able to run the project locally, you can also have a look
+at the running project deployed on netlify :
+
+https://heuristic-chandrasekhar-be0090.netlify.com/ 
+
+## Main Component
+
+The main component of the project is 'file-upload' component.
+The logic to read and parse the uploaded file is written in :
+file-upload.component.ts 
+(https://github.com/avinashlahel/assignment-fe/blob/master/src/app/file-upload/file-upload.component.ts)
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test` to execute the unit tests via [Karma]
 
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
