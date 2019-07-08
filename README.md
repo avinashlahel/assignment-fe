@@ -29,7 +29,7 @@ Before running these, make sure you have node(v10+) and angular CLI installed gl
 Incase you are not able to run the project locally, you can also have a look
 at the running project deployed on netlify :
 
-https://heuristic-chandrasekhar-be0090.netlify.com/ 
+https://avinash-lahel.netlify.com/
 
 ## Main Component
 
