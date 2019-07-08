@@ -1,10 +1,10 @@
-# AssignementFe
+# AssignmentFe
 
 Following tools have been used for this project
 
-Angular 8
-Angular CLI
-Angular Material (responsive UI)
+- Angular 8
+- Angular CLI
+- Angular Material (responsive UI)
 
 ## What does the app do ?
 
