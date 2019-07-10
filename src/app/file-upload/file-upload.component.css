@@ -40,6 +40,13 @@
   padding: 10px;
 }
 
+.subtitle{
+  font-size: 0.8rem;
+  margin-top: 7px;
+  font-weight: 100;
+  text-align: right;
+}
+
 table {
   width: 100%;
 }
