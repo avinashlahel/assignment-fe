@@ -8,6 +8,7 @@ import {
 } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { MatSort, MatSnackBar } from "@angular/material";
+import {throwError} from 'rxjs';
 
 export interface UserElement {
   fName: string;
@@ -62,12 +63,15 @@ export class FileUploadComponent implements OnInit, OnChanges {
   onFileLoad(data) {
     const parsedContent = [];
     try {
+
       const csvData = data.target.result;
       const allRecords = csvData.split(/\r\n|\n/);
       const dataRecords = allRecords.slice(1); // Remove the header
       if (dataRecords && dataRecords.length > 0) {
         for (const record of dataRecords) {
           const fields = this.sanitize(record.split(",")); // individual columns
+          if(!isNaN(fields[0]) || !isNaN(fields[1]) || isNaN(fields[2]) || !isNaN(fields[3]))
+            throw "Error found in contract";
           const obj = {
             fName: fields[0],
             lName: fields[1],
@@ -78,7 +82,7 @@ export class FileUploadComponent implements OnInit, OnChanges {
         }
       }
     } catch (err) {
-      this.showError("Error parsing the document, please verify & try again!");
+      this.showError("Error parsing the document, please verify the contract & try again!");
     }
     this.tableData = parsedContent;
   }
@@ -112,6 +116,10 @@ export class FileUploadComponent implements OnInit, OnChanges {
   }
 
   onUpload() {
+    if (this.tableData && this.tableData.length == 0){
+      this.showError("Either no file chosen or file data incorrect");
+      return;
+    }
     this.dataSource.data = this.tableData;
   }
 
